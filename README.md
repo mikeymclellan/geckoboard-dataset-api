@@ -5,6 +5,12 @@ Library provides client for Geckoboard DataSet API by REST requests
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bdaace9a-a9e6-4667-a892-092db9d14663/mini.png)](https://insight.sensiolabs.com/projects/bdaace9a-a9e6-4667-a892-092db9d14663) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gkawka/geckoboard-dataset-api/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gkawka/geckoboard-dataset-api/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/gkawka/geckoboard-dataset-api/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/gkawka/geckoboard-dataset-api/?branch=master)
 
+
+Changelog
+---
+
+Forked from https://github.com/gkawka/geckoboard-dataset-api to support Guzzle 6
+
 How to use
 ---
 
@@ -78,7 +84,7 @@ Create client:
 
 ```php
 
-$httpClient = new \Guzzle\Http\Client('https://api.geckoboard.com');
+$httpClient = new \Guzzle\Http\Client(['base_uri' => 'https://api.geckoboard.com']);
 $client = new \Kwk\Geckoboard\Dataset\Client($httpClient, 'YOUR_API_KEY');
 
 ```

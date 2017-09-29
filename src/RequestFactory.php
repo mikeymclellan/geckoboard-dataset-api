@@ -32,9 +32,9 @@ class RequestFactory
      *
      * @return RequestInterface
      */
-    public function getCreateRequest(DataSetInterface $dataSet)
+    public function createRequest(DataSetInterface $dataSet)
     {
-        return $this->client->createRequest(
+        return $this->client->request(
             'PUT',
             sprintf('/datasets/%s', $dataSet->getName()),
             [
@@ -53,14 +53,14 @@ class RequestFactory
      *
      * @return RequestInterface
      */
-    public function getAppendRequest($datasetName, array $rows)
+    public function appendRequest($datasetName, array $rows)
     {
         $data = [];
         foreach ($rows as $row) {
             $data[] = $row->getData();
         }
 
-        return $this->client->createRequest(
+        return $this->client->request(
             'POST',
             sprintf('/datasets/%s/data', $datasetName),
             [
@@ -79,14 +79,14 @@ class RequestFactory
      *
      * @return RequestInterface
      */
-    public function getReplaceRequest($datasetName, array $rows)
+    public function replaceRequest($datasetName, array $rows)
     {
         $data = [];
         foreach ($rows as $row) {
             $data[] = $row->getData();
         }
 
-        return $this->client->createRequest(
+        return $this->client->request(
             'PUT',
             sprintf('/datasets/%s/data', $datasetName),
             [
@@ -104,9 +104,9 @@ class RequestFactory
      *
      * @return RequestInterface
      */
-    public function getDeleteRequest($datasetName)
+    public function deleteRequest($datasetName)
     {
-        return $this->client->createRequest(
+        return $this->client->request(
             'DELETE',
             sprintf('/datasets/%s', $datasetName),
             [

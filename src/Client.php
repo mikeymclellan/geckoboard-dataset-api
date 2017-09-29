@@ -38,9 +38,7 @@ class Client
      */
     public function create(DataSetInterface $dataSet)
     {
-        $request = (new RequestFactory($this->httpClient, $this->apiKey))->getCreateRequest($dataSet);
-
-        return $this->httpClient->send($request);
+        return (new RequestFactory($this->httpClient, $this->apiKey))->createRequest($dataSet);
     }
 
     /**
@@ -53,9 +51,7 @@ class Client
      */
     public function append(DataSetInterface $dataSet, array $dataRows)
     {
-        $request = (new RequestFactory($this->httpClient, $this->apiKey))->getAppendRequest($dataSet->getName(), $dataRows);
-
-        return $this->httpClient->send($request);
+        return (new RequestFactory($this->httpClient, $this->apiKey))->appendRequest($dataSet->getName(), $dataRows);
     }
 
     /**
@@ -68,9 +64,7 @@ class Client
      */
     public function replace(DataSetInterface $dataSet, array $dataRows)
     {
-        $request = (new RequestFactory($this->httpClient, $this->apiKey))->getReplaceRequest($dataSet->getName(), $dataRows);
-
-        return $this->httpClient->send($request);
+        return (new RequestFactory($this->httpClient, $this->apiKey))->replaceRequest($dataSet->getName(), $dataRows);
     }
 
     /**
@@ -82,8 +76,6 @@ class Client
      */
     public function delete(DataSetInterface $dataSet)
     {
-        $request = (new RequestFactory($this->httpClient, $this->apiKey))->getDeleteRequest($dataSet->getName());
-
-        return $this->httpClient->send($request);
+        return (new RequestFactory($this->httpClient, $this->apiKey))->deleteRequest($dataSet->getName());
     }
 }
